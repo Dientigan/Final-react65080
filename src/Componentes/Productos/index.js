@@ -1,95 +1,34 @@
-import React from "react";
-import IMG from "../../images/img01.jpg"
+import React, {useContext} from "react";
+import { DataConstext } from "../../context/ElementProvided";
+import { ProductItem } from "./ProductItem";
 
 export const ProductosLista = () => {
+
+    const value = useContext(DataConstext)
+    const [productos] = value.productos
+    
+
     return (
         <>
-            <h1 className="title"> Productos </h1>
+            <h1 className="title"> 
+                Productos 
+            </h1>
+
             <div className="productos">
-                <div className="producto">
-                    <a href="#">
-                        <div className="producto-img">
-                            <img src={IMG} alt="#"/>
-                        </div>
-                    </a>
-                    <div className="pie-producto">
-                        <h1>
-                            title
-                        </h1>
-                        <p>
-                            Categoria
-                        </p>
-                        <p className="price">
-                            150$
-                        </p>
-                    </div>
-                    <div className="button">
-                        <button className="btn">
-                            Añadir al Carrito
-                        </button>
-                        <div>
-                            <a href="#" className="btn">Vista</a>
-                        </div>
-                    </div>
-                </div>
+                {
+                    productos.map(producto =>(
+                        <ProductItem 
+                            key= {producto.id} 
+                            id={producto.id} 
+                            title={producto.title} 
+                            price={producto.price} 
+                            image={producto.image} 
+                            category={producto.category} 
+                            Cantidad={producto.cantidad} 
 
-
-
-                <div className="producto">
-                    <a href="#">
-                        <div className="producto-img">
-                            <img src={IMG} alt="#"/>
-                        </div>
-                    </a>
-                    <div className="pie-producto">
-                        <h1>
-                            title
-                        </h1>
-                        <p>
-                            Categoria
-                        </p>
-                        <p className="price">
-                            150$
-                        </p>
-                    </div>
-                    <div className="button">
-                        <button className="btn">
-                            Añadir al Carrito
-                        </button>
-                        <div>
-                            <a href="#" className="btn">Vista</a>
-                        </div>
-                    </div>
-                </div>  
-
-
-                <div className="producto">
-                    <a href="#">
-                        <div className="producto-img">
-                            <img src={IMG} alt="#"/>
-                        </div>
-                    </a>
-                    <div className="pie-producto">
-                        <h1>
-                            title
-                        </h1>
-                        <p>
-                            Categoria
-                        </p>
-                        <p className="price">
-                            150$
-                        </p>
-                    </div>
-                    <div className="button">
-                        <button className="btn">
-                            Añadir al Carrito
-                        </button>
-                        <div>
-                            <a href="#" className="btn">Vista</a>
-                        </div>
-                    </div>
-                </div>  
-
+                            />
+                    ))
+                }
             </div>
         </>
     )
