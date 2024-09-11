@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
+import { link } from "react-router-dom"
+import { DataConstext } from "../../context/ElementProvided";
 
 
 
@@ -9,6 +11,10 @@ export const ProductItem = () => ({
     image,
     category,
 }) => {
+
+    const value = useContext(DataConstext);
+    const addcarrito = value.addcarrito
+
     return (
         <div className="producto">
         <a href="#">
@@ -28,7 +34,7 @@ export const ProductItem = () => ({
             </p>
         </div>
         <div className="button">
-            <button className="btn">
+            <button className="btn" onClick={() => addcarrito(id)}>
                 Añadir al Carrito
             </button>
             <div>

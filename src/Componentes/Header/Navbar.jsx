@@ -1,7 +1,17 @@
-import React from "react";
+import React, {useContext} from "react";
 import Descarga from "../../images/Descarga.png";
+import { DataConstext } from "../../context/ElementProvided";
 
 export const Header  = () => {
+
+    const value = useContext(DataConstext)
+    const [menu, setmenu] = value.menu;
+    const [carrito] = value.carrito
+
+    const toogleMenu = () => {
+        setmenu(!menu)
+    }
+
     return (
        <header>
 
@@ -23,9 +33,9 @@ export const Header  = () => {
                     </a>
                 </li>
             </ul>
-            <div className="cart">
+            <div className="cart" onClick={toogleMenu}>
                 <box-icon name="cart"></box-icon>
-                <span className="item-total">0</span>
+                <span className="item-total"> {carrito.lenght} </span>
             </div>
        </header>
     )
